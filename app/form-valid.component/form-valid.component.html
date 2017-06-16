@@ -1,0 +1,68 @@
+<div class="panel">
+
+    <div class="form-group">
+        <label for="">Name</label>
+
+        <input
+                type="text"
+                name="nameVal"
+                class="form-control"
+
+                [(ngModel)]="userVal.nameVal"
+                #nameVal="ngModel"
+                required
+                maxlength="80"
+        >
+        <!--Если хотя бы одно из этих свойств равно true, то атрибут hidden тоже равен true.-->
+        <div [hidden]="nameVal.valid || nameVal.untouched" class="alert alert-danger">
+            Не указано имя
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="">Email</label>
+        <input
+                type="text"
+                name="emailVal"
+                class="form-control"
+
+                [(ngModel)]="userVal.emailVal"
+                #emailVal="ngModel"
+                required
+                pattern="[a-zA-Z_0-9]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}"
+        >
+        <div class="alert alert-danger" [hidden]="emailVal.valid || emailVal.untouched">
+            Некорректный email
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="">Phone</label>
+        <input
+                type="text"
+                class="form-control"
+                name="phoneVal"
+                maxlength="12"
+
+                [(ngModel)]="userVal.phoneVal"
+                #phoneVal="ngModel"
+                required
+                pattern="[0-9()]{12}"
+                (ngModelChange)="correctNumber()"
+        >
+        <div class="alert alert-danger" [hidden]="phoneVal.valid || phoneVal.untouched">
+            Некорректный номер телефона
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button
+                class="btn btn-default"
+                (click)="addUser(nameVal, emailVal, phoneVal)"
+                [disabled]="nameVal.invalid || emailVal.invalid || phoneVal.invalid"
+        >Add User</button>
+        <!--[disabled]="nameVal.invalid || emailVal.invalid || phoneVal.invalid"-->
+    </div>
+
+</div>

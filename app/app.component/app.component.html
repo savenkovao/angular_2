@@ -1,0 +1,384 @@
+<a href="#footer" style="display: block; margin: 0 auto; padding: 10px 15px; border:1px solid black; text-align: center;">Footer</a>
+<sub-comp>
+    <p>Этот текст выводит основной компонент внутри дочернего компонента</p>
+    <p>Этот текст из основного компонента, поля <strong>'About me'</strong>: {{newUser.text}}</p>
+
+</sub-comp>
+
+<div class="wrapper">
+    <h1 class="title">Hello, {{newUser.name}}</h1>
+
+    <p class="descr">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Nesciunt, quo veniam? Aliquid consequatur dignissimos ea, eaque fugit hic incidunt
+        laborum maiores necessitatibus nemo, nobis odit omnis possimus tempore v
+        oluptatibus. Alias.
+    </p>
+
+    <p>
+        Som words about yourself: <span class="highlight">{{newUser.text}}</span>
+    </p>
+
+    <div>
+        <label>
+            <span>Enter your name:</span>
+            <input type="text" [(ngModel)]="newUser.name" (keyup)="newUser.logger('Name', newUser.name)">
+        </label>
+        <label>
+            <span>Age:</span>
+            <input type="text" [value]="newUser.age" disabled>
+        </label>
+    </div>
+
+
+
+    <div>
+        <label>
+            <p>Enter some words about yourself:</p>
+            <textarea cols="30" rows="10" [(ngModel)]="newUser.text" (keyup)="newUser.logger('Text', newUser.text)"></textarea>
+        </label>
+    </div>
+
+    <div>
+        <button (click)="newUser.increaseAge()">Age+</button>
+        <span>{{newUser.age}}</span>
+        <button (click)="newUser.reduceAge()">Age-</button>
+    </div>
+
+
+    <br>
+    <br>
+    <br>
+    <hr>
+    <ind-comp></ind-comp>
+
+
+    <div>
+        <h2 (click)="arr(tasks)">Tasks for today</h2>
+
+        <div class="add-task">
+            <h3>Add new task</h3>
+            <label for="">
+                <span>Enter new task</span>
+                <input type="text" id="input-task" [(ngModel)]="text">
+            </label>
+            <button (click)="addTask(text, $event)">Add task</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Task</th>
+                    <th>Done</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of tasks; let i = index;">
+                    <td>{{i+1}}</td>
+                    <td>{{item.task}}</td>
+                    <td><input type="checkbox" [(ngModel)]="item.done"></td>
+                    <td class="remove"><button (click)="removeTask($event)">remove</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <br>
+    <br>
+    <br>
+    <hr>
+    <input-comp
+            [inputName]="name"
+            [inputAge]="age"
+            [inputSurname]="surname"
+            [inputWorkplace]="workplace"
+    ></input-comp>
+
+    <label for="">
+        <p>Ввести name <strong>из главного компонента</strong> и вставить <strong>в inputName</strong> дочернего:</p>
+        <!--<input type="text" [(ngModel)]="name">-->
+    </label>
+
+    <label for="">
+        <p>Ввести age <strong>из главного компонента</strong> и вставить <strong>в inputAge</strong> дочернего:</p>
+        <input type="text" [(ngModel)]="age">
+    </label>
+
+    <label for="">
+        <p>Ввести surname <strong>из главного компонента</strong> и вставить <strong>в inputSurname</strong> дочернего:</p>
+        <input type="text" [(ngModel)]="surname">
+    </label>
+
+    <label for="">
+        <p>Ввести workplace <strong>из главного компонента</strong> и вставить <strong>в inputWorkplace</strong> дочернего:</p>
+        <input type="text" [(ngModel)]="workplace">
+    </label>
+
+
+
+
+
+
+
+
+
+    <br>
+    <br>
+    <br>
+    <hr>
+    <h3>Привязка к событиям дочернего компонента</h3>
+    <p> Привязка к событию дочернего компонента: при возникновении события в
+         дочернем компоненте мы обрабатывали это событие в главном компоненте с помощью метода.</p>
+    <p>Количество кликов: {{clicks}}</p>
+    <out-comp (onChanged)="onChangeddd($event)"></out-comp>
+
+    <br>
+    <br>
+    <br>
+    <hr>
+    <h3>Двустороняя привязка</h3>
+    <ol>
+        <li>Импорт переменной из главного компонента в дочерний</li>
+        <li>Подстановка импортированного значения в инпут</li>
+        <li> При изменении импута - срабатывает событие</li>
+        <li> onUserChange перезаписывает переменную дочернего компонента и экспортирует
+        значение в главный компонент</li>
+        <li> Главный компонент отображает в темплейте изменения</li>
+    </ol>
+    <twoway-comp [(twoUser)]="twoName"></twoway-comp>
+    <p>Выбранное имя: {{twoName}}</p>
+
+
+    <br>
+    <br>
+    <br>
+    <hr>
+    <h3>Переключение клссов ngClass</h3>
+
+    <button (click)="toggle()">show/hide</button>
+
+    <div [class.invisible]="visibility">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at corporis, culpa error, facilis harum
+        hic inventore molestiae nihil nostrum tempora ullam veniam voluptate! Animi beatae culpa ex excepturi iusto.
+    </div>
+
+
+
+    <div class="roll_block" [ngClass]="{roll_up:var_up, roll_down:var_down}" (click)="roll()">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at corporis, culpa error, facilis harum
+        hic inventore molestiae nihil nostrum tempora ullam veniam voluptate! Animi beatae culpLorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at corporis, culpa error, facilis harum
+        hic inventore molestiae nihil nostrum tempora ullam veniam voluptate! Animi beatae culpLorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at corporis, culpa error, facilis harum
+        hic inventore molestiae nihil nostrum tempora ullam veniam voluptate! Animi beatae culpLorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at corporis, culpa error, facilis harum
+        hic inventore molestiae nihil nostrum tempora ullam veniam voluptate! Animi beatae culpLorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at corporis, culpa error, facilis harum
+        hic inventore molestiae nihil nostrum tempora ullam veniam voluptate! Animi beatae culpLorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at corporis, culpa error, facilis harum
+        hic inventore molestiae nihil nostrum tempora ullam veniam voluptate! Animi beatae culpLorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at corporis, culpa error, facilis harum
+        hic inventore molestiae nihil nostrum tempora ullam veniam voluptate! Animi beatae culpLorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at corporis, culpa error, facilis harum
+        hic inventore molestiae nihil nostrum tempora ullam veniam voluptate! Animi beatae culpLorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at corporis, culpa error, facilis harum
+        hic inventore molestiae nihil nostrum tempora ullam veniam voluptate! Animi beatae culpLorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at corporis, culpa error, facilis harum
+        hic inventore molestiae nihil nostrum tempora ullam veniam voluptate! Animi beatae culp
+    </div>
+
+    <div class="blank" [ngStyle]="{'margin-top':'40px'}" >
+        hic inventore molestiae nihil nostrum tempora ullam veniam voluptate! Animi beatae culpLorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at corporis, culpa error, facilis harum
+        hic inventore molestiae nihil nostrum tempora ullam veniam voluptate! Animi beatae culpLorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at corporis, culpa error, facilis harum
+        hic inventore molestiae nihil nostrum tempora ullam veniam voluptate! Animi beatae culpLorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at corporis, culpa error, facilis harum
+        hic inventore molestiae nihil nostrum tempora ullam veniam voluptate! Animi beatae culpLorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at corporis, culpa error, facilis harum
+        hic inventore molestiae nihil nostrum tempora ullam veniam voluptate! Animi beatae culpLorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at corporis, culpa error, facilis harum
+        hic inventore molestiae nihil nostrum tempora ullam veniam voluptate! Animi beatae culpLorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at corporis, culpa error, facilis harum
+        hic inventore molestiae nihil nostrum tempora ullam veniam voluptate! Animi beatae culpLorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at corporis, culpa error, facilis harum
+        hic inventore molestiae nihil nostrum tempora ullam veniam voluptate! Animi beatae culpLorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at corporis, culpa error, facilis harum
+        hic inventore molestiae nihil nostrum tempora ullam veniam voluptate
+
+        <p [style.color]="'aqua'">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, ex, ipsum. Ad
+            aperiam cum deserunt dicta, dolore doloribus dolorum e
+            st eveniet minima, natus nihil officiis, omnis placeat rem sint voluptate.</p>
+
+        <p bold [defaultSize]="fontSize">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, ex, ipsum. Ad
+            aperiam cum deserunt dicta, dolore doloribus dolorum e
+            st eveniet minima, natus nihil officiis, omnis placeat rem sint voluptate. {{fontSize}}
+
+        </p>
+    </div>
+    
+    <br>
+    
+    <h3>Получение параметров в директивах</h3>
+    <input [(ngModel)]="fontSize" type="text">
+
+    <br>
+    <br>
+    <br>
+    <hr>
+    <h3>Структурные директивы</h3>
+    <h4>*ngIf</h4>
+
+    <p *ngIf="visibility">Привет мир!</p>
+    <p *ngIf="!visibility">Пока мир!</p>
+<!--Angular 4-->
+
+    <div *ngIf="visibility; then thenBlock else elseBlock">
+
+    </div>
+    <ng-template #thenBlock><p>Then template</p></ng-template>
+    <ng-template #elseBlock><p>Else template</p></ng-template>
+
+    <button (click)="toggle()">Toggle</button>
+
+
+    <br>
+    <br>
+    <h4>*ngIf</h4>
+    <ol>
+        <li *ngFor="let item of phonesList; let i = index;">{{item.model}} - {{i}} </li>
+    </ol>
+
+    <p *ngFor="let item of phonesList; let i = index;">{{i+1}}. {{item.model}}</p>
+
+    <h4>*ngSwitch</h4>
+    <input [(ngModel)]="switch_expression" type="text">
+    <button (click)="checkSwitchExpression()">< > find</button>
+    <br>
+    <button (click)="switchToggleMinus()">< switch</button>
+    <button (click)="switchTogglePlus()">switch ></button>
+
+
+
+    <div [ngSwitch]="switch_expression">
+
+        <template *ngFor="let item of phonesList; let i = index;"] [ngSwitchCase]="i+1" >
+
+            <h5>{{i+1}}. {{item.model}}</h5>
+            <p>
+                <strong>Description:</strong> {{item.text}}
+            </p>
+        </template>
+
+
+        <template ngSwitchDefault>
+            <h5>Switch Default</h5>
+            <p><strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta dolorem
+                labore perspiciatis, possimus quidem sit vel voluptatem. Aspernatur dolor ea minima nam,
+                nesciunt nostrum odit optio, quasi rerum vel voluptatem.</p>
+        </template>
+
+    </div>
+
+
+    <br>
+    <br>
+    <br>
+    <hr>
+    <h3>Создание структурных директив - аналог директивы *ngIf</h3>
+    <div class="panel">
+        <p *struc="visibility" style="color: green;">параграф 1</p>
+        <p *struc="!visibility" style="color: red;">параграф 2</p>
+
+        <button (click)="toggle()">toggle</button>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="panel">
+
+        <div class="form-inline">
+            <div class="col-xs-12 col-sm-4">
+                <div class="form-group">
+                    <input [(ngModel)]="phoneName" type="text" class="form-control">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <div class="form-group">
+                    <input [(ngModel)]="phonePrice" type="number" class="form-control">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <div class="form-group">
+                    <div class="col-xs-offset-2">
+                        <button class="btn btn-default" (click)="addItem(phoneName, phonePrice)">Add phone</button>
+                    </div>
+                </div>
+          </div>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>№</td>
+                    <td>Phones</td>
+                    <td>Prices</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of items; let i = index;">
+                    <td>{{i}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.price}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+    <br>
+    <br>
+    <hr>
+    <h3>Один сервис для всех компонентов</h3>
+
+    <div class="panel">
+        <data-comp></data-comp>
+        <data-comp></data-comp>
+
+    </div>
+
+    <h3>Forms</h3>
+
+    <div class="panel">
+        <form-comp></form-comp>
+    </div>
+
+
+    <br>
+    <br>
+    <hr>
+    <h3>Получение и изменение модели</h3>
+
+    <div class="panel">
+        <form-ng-comp></form-ng-comp>
+    </div>
+
+    <br>
+    <br>
+    <hr>
+    <h3>Валиидация формы</h3>
+    <form-valid></form-valid>
+
+    <br>
+    <br>
+    <hr>
+    <h3>Директива NgForm</h3>
+    <form-fv></form-fv>
+</div>
+
+
+
+<footer id="footer"></footer>

@@ -1,0 +1,37 @@
+.title {
+    text-align: center;
+}
+
+.descr {
+    color: blue;
+    font-style: italic;
+}
+
+.invisible {
+    display: none;
+}
+
+.roll_block {
+    margin-top: 30px;
+    transition: all 0.4s linear;
+    height: 74px;
+    opacity: 0.5;
+    background-color: aquamarine;
+    overflow: hidden;
+}
+
+.roll_up {
+}
+
+.roll_down {
+    height:300px;
+    background-color: skyblue;
+}
+
+.blank {
+    height: 500px;
+}
+
+hr {
+    border-color: red;
+}

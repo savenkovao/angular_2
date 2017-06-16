@@ -1,0 +1,77 @@
+<div class="clearfix">
+    <div class="col-xs-10">
+
+    <div class="form-group">
+        <label for="">Название модели</label>
+        <input
+                type="text"
+                name="title_1"
+                class="form-control"
+                [(ngModel)]="phone_1.title_1"
+                #phoneTitle="ngModel"
+
+                (ngModelChange)="onTitleChange()"
+                [ngClass]="{notValid : validation}"
+                maxlength="19"
+        >
+        <!--(change)="onTitleChange()"-->
+    </div>
+
+    <div class="form-group">
+        <label for="">Цена</label>
+        <input
+                type="text"
+                name="phone_1"
+                class="form-control"
+                [(ngModel)]="phone_1.price_1"
+                #phonePrice="ngModel"
+        >
+    </div>
+
+    <div class="form-group">
+        <label for="">Компания</label>
+        <select
+                name="company_1"
+                class="form-control"
+                [(ngModel)]="phone_1.company_1"
+                #phoneCompany="ngModel"
+        >
+            <option *ngFor="let item of companies_1" [value]="item">{{item}}</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <button
+                class="btn btn-default"
+                (click)="addPhone(phoneTitle, phonePrice, phoneCompany)"
+        >
+            Добавить
+        </button>
+
+        <!--Ну и также мы можем передавать подобные переменные в обработчики событий
+и обрабатывать в коде компонента. Как в данном случае, данные переменные выводятся на консоль.-->
+    </div>
+
+    <!--Переменные представляют модель и ее состояние для соответствующего поля ввода.
+        phoneTitle,
+        phonePrice,
+        phoneCompany
+    -->
+
+    <!--Здесь для каждого поля определена переменная типа NgModel: #phoneTitle="ngModel"
+     или #phonePrice="ngModel". Каждая из этих переменных представляет модель и ее состояние
+      для соответствующего поля ввода. Используя свойства объекта NgModel, мы можем получить
+       данные о состоянии модели. В частности, с помощью свойства name мы можем получить название
+        поля ввода (значение атрибута name), к которому привязана переменная. А с помощью
+        свойств model и viewModel можно получить модель или конкретное значение этого поля. Например,
+         далее выводится блок с введенными значениями:-->
+
+    <div>
+        <p>{{phoneTitle.name}} : {{phoneTitle.model}} - {{phoneTitle.viewModel}}</p>
+        <p>{{phonePrice.name}} : {{phonePrice.model}} - {{phonePrice.viewModel}}</p>
+        <p>{{phoneCompany.name}} : {{phoneCompany.model}} - {{phoneCompany.viewModel}}</p>
+
+    </div>
+
+</div>
+</div>

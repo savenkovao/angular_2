@@ -1,0 +1,30 @@
+.wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+.highlight {
+    color: green;
+    font-weight: 500;
+    font-style: italic;
+}
+
+table {
+    width: 100%;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+td, th {
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+.remove {
+    text-align: center;
+}
+
+.add-task {
+    margin: 20px 0;
+}
