@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
+var http_1 = require("@angular/http");
 var index_js_1 = require("./app.component/index.js");
 var index_js_2 = require("./sub.component/index.js");
 var index_js_3 = require("./ind.component/index.js");
@@ -19,6 +20,8 @@ var index_js_8 = require("./form.component/index.js");
 var index_js_9 = require("./form-ng.component/index.js");
 var index_js_10 = require("./form-valid.component/index.js");
 var index_js_11 = require("./form_fv.component/index.js");
+var index_js_12 = require("./form-ddr.component/index.js");
+var index_js_13 = require("./http.component/index.js");
 var app_directive_js_1 = require("./app.component/app.directive.js");
 var struc_directive_1 = require("./app.component/struc.directive");
 var phones_service_1 = require("./app.component/phones.service");
@@ -32,7 +35,9 @@ AppModule = __decorate([
     core_1.NgModule({
         imports: [
             platform_browser_1.BrowserModule,
-            forms_1.FormsModule
+            forms_1.FormsModule,
+            forms_1.ReactiveFormsModule,
+            http_1.HttpModule
         ],
         declarations: [
             index_js_1.AppComponent,
@@ -46,6 +51,8 @@ AppModule = __decorate([
             index_js_9.FormNgComponent,
             index_js_10.FormValidationComponent,
             index_js_11.FullValidFormComponent,
+            index_js_12.FormDdrComponent,
+            index_js_13.HttpComponent,
             app_directive_js_1.BoldDirective,
             struc_directive_1.StrucDirective
         ],

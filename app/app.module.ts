@@ -1,7 +1,8 @@
 import { NgModule }         from '@angular/core';
 
 import { BrowserModule }    from '@angular/platform-browser';
-import { FormsModule }      from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }      from '@angular/forms';
+import { HttpModule }       from '@angular/http'
 
 import { AppComponent }     from './app.component/index.js';
 import { SubComponent }     from './sub.component/index.js';
@@ -14,6 +15,8 @@ import { FormComponent }    from './form.component/index.js';
 import { FormNgComponent }            from './form-ng.component/index.js';
 import { FormValidationComponent }    from './form-valid.component/index.js';
 import { FullValidFormComponent }     from './form_fv.component/index.js';
+import { FormDdrComponent }  from './form-ddr.component/index.js';
+import { HttpComponent }     from './http.component/index.js';
 
 
 import { BoldDirective }    from './app.component/app.directive.js';
@@ -28,7 +31,9 @@ import { LogService }       from './app.component/logger.service';
     imports:
         [
             BrowserModule,
-            FormsModule
+            FormsModule,
+            ReactiveFormsModule,
+            HttpModule
         ],
 
     declarations:
@@ -44,6 +49,8 @@ import { LogService }       from './app.component/logger.service';
             FormNgComponent,
             FormValidationComponent,
             FullValidFormComponent,
+            FormDdrComponent,
+            HttpComponent,
 
             BoldDirective,
             StrucDirective
