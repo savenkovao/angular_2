@@ -1,9 +1,48 @@
-<a href="#footer" style="display: block; margin: 0 auto; padding: 10px 15px; border:1px solid black; text-align: center;">Footer</a>
+<a href="/#footer" target="_self" style="display: block; margin: 0 auto; padding: 10px 15px; border:1px solid black; text-align: center;">Footer</a>
+
+<nav>
+    <ul>
+        <li routerLinkActive="active"[routerLinkActiveOptions]="{exact:true}"><a
+                class="menu-link"
+                routerLink=""
+
+
+        >Главная страница</a></li>
+
+        <li><a
+                class="menu-link"
+                routerLink="/about"
+                routerLinkActive="active"
+        >About</a></li>
+
+        <li><a
+                class="menu-link"
+                routerLink="/login"
+                routerLinkActive="active"
+        >Login</a></li>
+        <li><a
+                class="menu-link"
+                [routerLink]="['item', '5']"
+                routerLinkActive="active"
+        >Item 5</a></li>
+        <li><a
+                class="menu-link"
+                [routerLink]="['item', '7']"
+                routerLinkActive="active"
+        >Item 7</a></li>
+
+    </ul>
+</nav>
+
+<router-outlet></router-outlet>
+
 <sub-comp>
     <p>Этот текст выводит основной компонент внутри дочернего компонента</p>
     <p>Этот текст из основного компонента, поля <strong>'About me'</strong>: {{newUser.text}}</p>
 
 </sub-comp>
+
+
 
 <div class="wrapper">
     <h1 class="title">Hello, {{newUser.name}}</h1>
@@ -385,19 +424,7 @@
     <h3>Подход Data-Driven к работе с формами</h3>
     <form-ddr></form-ddr>
 
-    <br>
-    <br>
-    <hr>
-    <h3>HTTP и взаимодействие с сервером. Отправка get-запросов</h3>
-    <http-comp></http-comp>
-    <br>
-    <br>
-    <hr>
-    <h3>Отправка данных в запросе</h3>
-    <http-serv></http-serv>
-    <hr>
-    <h3>POST</h3>
-    <http-post></http-post>
+
 </div>
 
 

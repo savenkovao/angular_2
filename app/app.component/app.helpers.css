@@ -28,3 +28,13 @@ td, th {
 .add-task {
     margin: 20px 0;
 }
+
+.menu-link {
+    text-decoration: none;
+}
+
+.active {
+    color: red;
+    padding-left: 15px;
+    text-decoration: underline;
+}
