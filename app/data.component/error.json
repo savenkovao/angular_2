@@ -1,0 +1,9 @@
+{
+  "error" :
+  [
+    {
+      "name" : "I'm error file",
+      "age" :3466
+    }
+  ]
+}

@@ -17,7 +17,8 @@ import { FormValidationComponent }    from './form-valid.component/index.js';
 import { FullValidFormComponent }     from './form_fv.component/index.js';
 import { FormDdrComponent }  from './form-ddr.component/index.js';
 import { HttpComponent }     from './http.component/index.js';
-
+import { HttpServerComponent} from './http-server.component/index.js';
+import { HttpPostComponent } from './http-post.component/index.js';
 
 import { BoldDirective }    from './app.component/app.directive.js';
 import { StrucDirective }   from './app.component/struc.directive';
@@ -51,6 +52,8 @@ import { LogService }       from './app.component/logger.service';
             FullValidFormComponent,
             FormDdrComponent,
             HttpComponent,
+            HttpServerComponent,
+            HttpPostComponent,
 
             BoldDirective,
             StrucDirective

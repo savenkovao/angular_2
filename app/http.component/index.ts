@@ -46,7 +46,9 @@ export class HttpComponent implements OnInit {
     user: User;
     users: User[]=[];
     usersData: User[]=[];
-    usersInc: User[]=[];
+    usersInc:  User[]=[];
+
+    error : any;
 
     constructor(private httpService: HttpService, private httpIncService:HttpIncapsulatedService){}
 
@@ -69,7 +71,18 @@ export class HttpComponent implements OnInit {
                 }
             } );
 
-        this.httpIncService.getUsers().subscribe((data)=>this.usersInc=data);
+        this.httpIncService.getUsers('users-d.json').subscribe((data)=>this.usersInc=data);
+
+        this.httpIncService.getUsers('error.json').subscribe(
+            (data) => {
+                this.usersInc=data;
+            },
+
+            (error: any) => {
+                this.error = error;
+                console.log(error);
+            }
+        );
 
 
     }

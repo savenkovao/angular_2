@@ -22,6 +22,8 @@ var index_js_10 = require("./form-valid.component/index.js");
 var index_js_11 = require("./form_fv.component/index.js");
 var index_js_12 = require("./form-ddr.component/index.js");
 var index_js_13 = require("./http.component/index.js");
+var index_js_14 = require("./http-server.component/index.js");
+var index_js_15 = require("./http-post.component/index.js");
 var app_directive_js_1 = require("./app.component/app.directive.js");
 var struc_directive_1 = require("./app.component/struc.directive");
 var phones_service_1 = require("./app.component/phones.service");
@@ -53,6 +55,8 @@ AppModule = __decorate([
             index_js_11.FullValidFormComponent,
             index_js_12.FormDdrComponent,
             index_js_13.HttpComponent,
+            index_js_14.HttpServerComponent,
+            index_js_15.HttpPostComponent,
             app_directive_js_1.BoldDirective,
             struc_directive_1.StrucDirective
         ],

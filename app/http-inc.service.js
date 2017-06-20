@@ -10,21 +10,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
+var Observable_1 = require("rxjs/Observable");
 require("rxjs/add/operator/map");
+require("rxjs/add/operator/catch");
+require("rxjs/add/observable/throw");
 var HttpIncapsulatedService = (function () {
     function HttpIncapsulatedService(http) {
         this.http = http;
     }
-    HttpIncapsulatedService.prototype.getUsers = function () {
-        return this.http.get('users-d.json').map(function (resp) {
-            var usersList = resp.json().data;
+    HttpIncapsulatedService.prototype.getUsers = function (name) {
+        return this.http.get(name).map(function (resp) {
+            var usersList = resp.json().data || resp.json().error;
             var users = [];
             for (var index in usersList) {
-                console.log(usersList[index]);
                 var user = usersList[index];
                 users.push({ name: user.userName, age: user.userAge });
             }
             return users;
+        })
+            .catch(function (error) {
+            return Observable_1.Observable.throw(error);
         });
     };
     return HttpIncapsulatedService;

@@ -35,7 +35,13 @@ var HttpComponent = (function () {
                 });
             }
         });
-        this.httpIncService.getUsers().subscribe(function (data) { return _this.usersInc = data; });
+        this.httpIncService.getUsers('users-d.json').subscribe(function (data) { return _this.usersInc = data; });
+        this.httpIncService.getUsers('error.json').subscribe(function (data) {
+            _this.usersInc = data;
+        }, function (error) {
+            _this.error = error;
+            console.log(error);
+        });
     };
     return HttpComponent;
 }());
